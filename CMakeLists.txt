@@ -9,6 +9,7 @@ project(fcl_examples)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   fcl
+  roscpp
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES fcl_examples
-#  CATKIN_DEPENDS fcl
+#  CATKIN_DEPENDS fcl roscpp
 #  DEPENDS system_lib
 )
 
