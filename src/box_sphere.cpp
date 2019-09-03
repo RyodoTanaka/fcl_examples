@@ -44,8 +44,8 @@ int main(int argc, char* argv[]) {
     fcl::DistanceResult<double> result;
     request.enable_nearest_points = true;
     request.enable_signed_distance = true;
-    request.gjk_solver_type = fcl::GJKSolverType::GST_INDEP;
-    // request.gjk_solver_type = fcl::GJKSolverType::GST_LIBCCD;
+    // request.gjk_solver_type = fcl::GJKSolverType::GST_INDEP;
+    request.gjk_solver_type = fcl::GJKSolverType::GST_LIBCCD;
     
     // Calculate distance
     result.clear();
