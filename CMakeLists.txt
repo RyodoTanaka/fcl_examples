@@ -16,10 +16,19 @@ catkin_package(
 ###########
 ## Build ##
 ###########
+set(SOURCE
+  sphere_sphere
+  box_sphere
+  )
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${FCL_INCLUDE_DIRS}
+  )
+link_directories(
+  ${FCL_LIBRARY_DIRS}
 )
-add_executable(sphere_sphere src/sphere_sphere.cpp)
-target_link_libraries(sphere_sphere
-  ${catkin_LIBRARIES}
-)
+
+foreach(src ${SOURCE})
+  add_executable(${src} src/${src}.cpp)
+  target_link_libraries(${src} ${FCL_LIBRARIES} ${catkin_LIBRARIES} )
+endforeach(src)
