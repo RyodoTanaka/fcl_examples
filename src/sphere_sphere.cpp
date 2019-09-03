@@ -11,10 +11,8 @@
 #include <fcl/narrowphase/distance_result.h>
 
 // If you wonder the fcl::FCL_REAL, fcl::Transform3, and etc...// 
-// you should see <fcl/data_types.h> 
-// About Transform3f, <fcl/math/transform.h>
-// Matrix3f <fcl/math/matrix3f.h>
-// Vec3f <fcl/math/vec3f.h
+// you should see <fcl/common/types.h> 
+// And you will understand it is equal to Eigen functions
 
 Eigen::Matrix3d setRPY(const Eigen::Vector3d rot)
 {
