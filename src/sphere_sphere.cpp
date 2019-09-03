@@ -26,12 +26,12 @@ int main(int argc, char* argv[]) {
     // Translate & Rotation 1
     fcl::Vec3f trans1;
     fcl::Matrix3f rot1;
-    trans1.setValue(5.,5.,0.);
+    trans1.setValue(0.,0.,0.);
     rot1.setEulerYPR(0.,0.,0.);
     // Translate & Rotation 2
     fcl::Vec3f trans2;
     fcl::Matrix3f rot2;
-    trans2.setValue(1.,0.,0.);
+    trans2.setValue(3.,3.,0.);
     rot2.setEulerYPR(0.,0.,0.);
     // set Transform
     fcl::Transform3f pose1;
@@ -41,20 +41,24 @@ int main(int argc, char* argv[]) {
     ////////////////
     // set Sphere //
     ////////////////
-    double radius1 = 2.0;
-    double radius2 = 2.0;
+    double radius1 = 1.0;
+    double radius2 = 1.0;
     fcl::Sphere sphere1 = fcl::Sphere(radius1);
     fcl::Sphere sphere2 = fcl::Sphere(radius2);
     // Distance Request and Result 
     fcl::DistanceRequest request;
     fcl::DistanceResult result;
-
+    request.enable_nearest_points = true;
+    
     // Calculate distance
     result.clear();
     fcl::FCL_REAL dist = fcl::distance(&sphere1, pose1, &sphere2, pose2, request, result);
 
     // Show results
     std::cout << dist << std::endl;
+    std::cout << result.min_distance << std::endl;
+    std::cout << pose1.transform(result.nearest_points[0]) << std::endl;
+    std::cout << pose2.transform(result.nearest_points[1]) << std::endl;
     
     return 0;
 }
