@@ -39,6 +39,7 @@ link_directories(${FCL_LIBRARY_DIRS})
 set(SOURCE
   sphere_sphere
   box_sphere
+  box_box
   )
 
 foreach(src ${SOURCE})
