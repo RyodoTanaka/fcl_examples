@@ -42,6 +42,7 @@ set(SOURCE
   box_box
   cylinder_sphere
   cylinder_box
+  cylinder_cylinder
   )
 
 foreach(src ${SOURCE})
