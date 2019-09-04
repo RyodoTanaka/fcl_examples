@@ -3,9 +3,9 @@
 
 |  |Sphere|Box|Cylinder|Others|
 |:---:|:---:|:---:|:---:|:---:|
-|**Sphere**| :o: | :o: | :x: | :x: |
-|**Box**| :o: | :o: | :x: | :x: |
-|**Cylinder**| :x: | :x: | :x: | :x: |
+|**Sphere**| :o: | :o: | :o: | :x: |
+|**Box**| :o: | :o: | :o: | :x: |
+|**Cylinder**| :o: | :o: | :o: | :x: |
 |**Others**| :x: | :x: | :x: | :x: |
 
 ## Requirements
