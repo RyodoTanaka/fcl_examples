@@ -15,7 +15,9 @@
 
 ## Requirements
 [ROS melodic](https://ros.org)  
-[fcl >= 0.6.0](https://github.com/flexible-collision-library/fcl)
+[fcl >= 0.6.0](https://github.com/flexible-collision-library/fcl)  
+**You should not use fcl <= 0.5.0. Because there are bug on calculating nearest points.**  
+About the detail, see https://github.com/flexible-collision-library/fcl/issues/127
 
 ## Installation
 ```bash
