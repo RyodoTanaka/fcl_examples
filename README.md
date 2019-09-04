@@ -1,12 +1,17 @@
 # fcl_examples
 [Flexible Collision Libraries](https://github.com/flexible-collision-library/fcl) examples.
 
-|  |Sphere|Box|Cylinder|Others|
-|:---:|:---:|:---:|:---:|:---:|
-|**Sphere**| :o: | :o: | :o: | :x: |
-|**Box**| :o: | :o: | :o: | :x: |
-|**Cylinder**| :o: | :o: | :o: | :x: |
-|**Others**| :x: | :x: | :x: | :x: |
+|  |Sphere|Box|Cylinder|Triangle|Plane|Convex|Capsule|Ellipsoid|Cone|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|**Sphere**| :o: | :o: | :o: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Box**| :o: | :o: | :o: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Cylinder**| :o: | :o: | :o: | :x:|  :x: | :x: | :x: | :x: | :x: |
+|**Triangle**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Plane**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Convex**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Capsule**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Ellipsoid**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
+|**Cone**| :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: | :x: |
 
 ## Requirements
 [ROS melodic](https://ros.org)  
