@@ -4,8 +4,8 @@
 |  |Sphere|Box|Cylinder|Others|
 |:---:|:---:|:---:|:---:|:---:|
 |**Sphere**| :o: | :o: | :o: | :x: |
-|**Box**| :o: | :o: | :x: | :x: |
-|**Cylinder**| :o: | :x: | :x: | :x: |
+|**Box**| :o: | :o: | :o: | :x: |
+|**Cylinder**| :o: | :o: | :x: | :x: |
 |**Others**| :x: | :x: | :x: | :x: |
 
 ## Requirements
