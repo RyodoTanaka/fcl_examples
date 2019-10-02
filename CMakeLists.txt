@@ -36,16 +36,16 @@ link_directories(${FCL_LIBRARY_DIRS})
 ###########
 ## Build ##
 ###########
-set(SOURCE
-  sphere_sphere
-  box_sphere
-  box_box
-  cylinder_sphere
-  cylinder_box
-  cylinder_cylinder
+set(NARROW_PHASE_SOURCE
+  np_sphere_sphere
+  np_box_sphere
+  np_box_box
+  np_cylinder_sphere
+  np_cylinder_box
+  np_cylinder_cylinder
   )
 
-foreach(src ${SOURCE})
-  add_executable(${src} src/${src}.cpp)
+foreach(src ${NARROW_PHASE_SOURCE})
+  add_executable(${src} src/narrowphase/${src}.cpp)
   target_link_libraries(${src} ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
 endforeach(src)
