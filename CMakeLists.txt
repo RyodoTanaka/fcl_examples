@@ -33,6 +33,14 @@ find_package(FCL REQUIRED)
 include_directories(${FCL_INCLUDE_DIRS})
 link_directories(${FCL_LIBRARY_DIRS})
 
+##################
+## Original Lib ##
+##################
+add_library(Utils SHARED
+  src/broadphase/utils.cpp
+  src/broadphase/utils.h
+  )
+
 ###########
 ## Build ##
 ###########
@@ -45,7 +53,16 @@ set(NARROW_PHASE_SOURCE
   np_cylinder_cylinder
   )
 
+set(BROAD_PHASE_SOURCE
+  bp_dynamic_aabb_tree
+  )
+
 foreach(src ${NARROW_PHASE_SOURCE})
   add_executable(${src} src/narrowphase/${src}.cpp)
   target_link_libraries(${src} ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
+endforeach(src)
+
+foreach(src ${BROAD_PHASE_SOURCE})
+  add_executable(${src} src/broadphase/${src}.cpp)
+  target_link_libraries(${src} Utils ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
 endforeach(src)
