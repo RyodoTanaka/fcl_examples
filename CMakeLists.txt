@@ -33,19 +33,40 @@ find_package(FCL REQUIRED)
 include_directories(${FCL_INCLUDE_DIRS})
 link_directories(${FCL_LIBRARY_DIRS})
 
+##################
+## Original Lib ##
+##################
+add_library(FCLExampleUtils SHARED
+  src/broadphase/utils.cpp
+  src/broadphase/utils.h
+  )
+
+set(ORIGINAL_LIBS
+  FCLExampleUtils
+  )
+
 ###########
 ## Build ##
 ###########
-set(SOURCE
-  sphere_sphere
-  box_sphere
-  box_box
-  cylinder_sphere
-  cylinder_box
-  cylinder_cylinder
+set(NARROW_PHASE_SOURCE
+  np_sphere_sphere
+  np_box_sphere
+  np_box_box
+  np_cylinder_sphere
+  np_cylinder_box
+  np_cylinder_cylinder
   )
 
-foreach(src ${SOURCE})
-  add_executable(${src} src/${src}.cpp)
+set(BROAD_PHASE_SOURCE
+  bp_dynamic_aabb_tree
+  )
+
+foreach(src ${NARROW_PHASE_SOURCE})
+  add_executable(${src} src/narrowphase/${src}.cpp)
   target_link_libraries(${src} ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
+endforeach(src)
+
+foreach(src ${BROAD_PHASE_SOURCE})
+  add_executable(${src} src/broadphase/${src}.cpp)
+  target_link_libraries(${src} ${ORIGINAL_LIBS} ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
 endforeach(src)
