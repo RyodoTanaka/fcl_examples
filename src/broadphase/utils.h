@@ -47,10 +47,9 @@ struct DistanceData
   bool done;
 };
 
-template <typename S>
-void generateEnvironments(vector<shared_ptr<CollisionObject<S>>>& env);
-template <typename S>
-void generateRequests(vector<shared_ptr<CollisionObject<S>>>& req, const Eigen::Vector3d trans, const Eigen::Vector3d rot);
+void generateEnvironments(vector< CollisionObject<double>* >& env);
+
+void generateQueries(vector< CollisionObject<double>* >& req, const Eigen::Vector3d trans, const Eigen::Vector3d rot);
 
 } // namespace example
 } // namespace fcl
@@ -64,5 +63,41 @@ Eigen::Matrix3d setRPY(const Eigen::Vector3d rot)
   return ret;
 }
 
+namespace fe = fcl::example;
+
+template <typename S>
+bool fe::CollisionFunction(fcl::CollisionObject<S>* o1, fcl::CollisionObject<S>* o2, void* cdata_)
+{
+  auto* cdata = static_cast<fe::CollisionData<S>*>(cdata_);
+  const auto& request = cdata->request;
+  auto& result = cdata->result;
+
+  if(cdata->done) return true;
+
+  collide(o1, o2, request, result);
+
+  if(!request.enable_cost && (result.isCollision()) && (result.numContacts() >= request.num_max_contacts))
+    cdata->done = true;
+
+  return cdata->done;
+}
+
+template <typename S>
+bool fe::DistanceFunction(fcl::CollisionObject<S>* o1, fcl::CollisionObject<S>* o2, void* cdata_, S& dist)
+{
+  auto* cdata = static_cast<fe::DistanceData<S>*>(cdata_);
+  const fcl::DistanceRequest<S>& request = cdata->request;
+  fcl::DistanceResult<S>& result = cdata->result;
+    
+  if(cdata->done) { dist = result.min_distance; return true; }
+
+  distance(o1, o2, request, result);
+
+  dist = result.min_distance;
+
+  if(dist <= 0) return true; // in collision or in touch
+
+  return cdata->done;
+}
 
 #endif
