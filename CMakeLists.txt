@@ -36,9 +36,13 @@ link_directories(${FCL_LIBRARY_DIRS})
 ##################
 ## Original Lib ##
 ##################
-add_library(Utils SHARED
+add_library(FCLExampleUtils SHARED
   src/broadphase/utils.cpp
   src/broadphase/utils.h
+  )
+
+set(ORIGINAL_LIBS
+  FCLExampleUtils
   )
 
 ###########
@@ -64,5 +68,5 @@ endforeach(src)
 
 foreach(src ${BROAD_PHASE_SOURCE})
   add_executable(${src} src/broadphase/${src}.cpp)
-  target_link_libraries(${src} Utils ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
+  target_link_libraries(${src} ${ORIGINAL_LIBS} ${FCL_LIBRARIES} ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES})
 endforeach(src)
